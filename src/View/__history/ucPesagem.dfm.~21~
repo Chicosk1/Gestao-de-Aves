@@ -29,44 +29,6 @@ object frmPesagem: TfrmPesagem
       Height = 15
       Caption = 'Data da Pesagem'
     end
-    object lblPeso: TLabel
-      Left = 20
-      Top = 80
-      Width = 86
-      Height = 15
-      Caption = 'Peso M'#233'dio (kg)'
-    end
-    object lblQtd: TLabel
-      Left = 20
-      Top = 140
-      Width = 96
-      Height = 15
-      Caption = 'Qtd. Aves Pesadas'
-    end
-    object edtPesoMedio: TEdit
-      Left = 20
-      Top = 100
-      Width = 150
-      Height = 23
-      TabOrder = 1
-    end
-    object edtQuantidade: TEdit
-      Left = 20
-      Top = 160
-      Width = 150
-      Height = 23
-      NumbersOnly = True
-      TabOrder = 2
-    end
-    object dtpDataPesagem: TDateTimePicker
-      Left = 20
-      Top = 40
-      Width = 150
-      Height = 23
-      Date = 46052.000000000000000000
-      Time = 0.782196724539971900
-      TabOrder = 0
-    end
   end
   object pnlBotoes: TPanel
     Left = 0
@@ -90,7 +52,7 @@ object frmPesagem: TfrmPesagem
       Caption = 'Salvar'
       ModalResult = 1
       NumGlyphs = 2
-      TabOrder = 1
+      TabOrder = 0
       ExplicitLeft = 549
       ExplicitHeight = 48
     end
@@ -109,7 +71,7 @@ object frmPesagem: TfrmPesagem
       Caption = 'Cancelar'
       ModalResult = 2
       NumGlyphs = 2
-      TabOrder = 0
+      TabOrder = 1
       ExplicitLeft = 336
       ExplicitTop = 8
     end

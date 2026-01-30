@@ -4,8 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.ComCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons;
 
 type
   TfrmPesagem = class(TForm)
@@ -15,12 +14,6 @@ type
     lblLoteSelecionado: TLabel;
     btnSalvar: TBitBtn;
     btnCancelar: TBitBtn;
-    lblData: TLabel;
-    lblPeso: TLabel;
-    lblQtd: TLabel;
-    edtPesoMedio: TEdit;
-    edtQuantidade: TEdit;
-    dtpDataPesagem: TDateTimePicker;
   private
     { Private declarations }
   public

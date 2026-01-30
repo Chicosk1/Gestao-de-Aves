@@ -48,7 +48,7 @@ object frmPesagem: TfrmPesagem
       Top = 100
       Width = 150
       Height = 23
-      TabOrder = 1
+      TabOrder = 0
     end
     object edtQuantidade: TEdit
       Left = 20
@@ -56,16 +56,7 @@ object frmPesagem: TfrmPesagem
       Width = 150
       Height = 23
       NumbersOnly = True
-      TabOrder = 2
-    end
-    object dtpDataPesagem: TDateTimePicker
-      Left = 20
-      Top = 40
-      Width = 150
-      Height = 23
-      Date = 46052.000000000000000000
-      Time = 0.782196724539971900
-      TabOrder = 0
+      TabOrder = 1
     end
   end
   object pnlBotoes: TPanel
@@ -90,7 +81,7 @@ object frmPesagem: TfrmPesagem
       Caption = 'Salvar'
       ModalResult = 1
       NumGlyphs = 2
-      TabOrder = 1
+      TabOrder = 0
       ExplicitLeft = 549
       ExplicitHeight = 48
     end
@@ -109,7 +100,7 @@ object frmPesagem: TfrmPesagem
       Caption = 'Cancelar'
       ModalResult = 2
       NumGlyphs = 2
-      TabOrder = 0
+      TabOrder = 1
       ExplicitLeft = 336
       ExplicitTop = 8
     end

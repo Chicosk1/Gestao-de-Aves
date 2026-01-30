@@ -4,10 +4,14 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls;
 
 type
-  TFormPesagem = class(TForm)
+  TfrmPesagem = class(TForm)
+    pnlInfoLote: TPanel;
+    pnlInputs: TPanel;
+    pnlBotoes: TPanel;
+    lblLoteSelecionado: TLabel;
   private
     { Private declarations }
   public
@@ -15,7 +19,7 @@ type
   end;
 
 var
-  FormPesagem: TFormPesagem;
+  frmPesagem: TfrmPesagem;
 
 implementation
 

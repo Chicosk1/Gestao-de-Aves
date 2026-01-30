@@ -85,48 +85,26 @@ object frmLote: TfrmLote
       TitleFont.Style = []
       Columns = <
         item
-          Alignment = taRightJustify
           Expanded = False
           FieldName = 'ID_LOTE'
-          Title.Alignment = taCenter
           Title.Caption = 'C'#243'd.'
           Width = 50
           Visible = True
         end
         item
-          Alignment = taRightJustify
           Expanded = False
-          FieldName = 'DESCRICAO'
-          Title.Alignment = taCenter
-          Title.Caption = 'Descri'#231#227'o do Lote'
-          Width = 250
           Visible = True
         end
         item
-          Alignment = taRightJustify
           Expanded = False
-          FieldName = 'DATA_ENTRADA'
-          Title.Alignment = taCenter
-          Title.Caption = 'Data Entrada'
-          Width = 80
           Visible = True
         end
         item
-          Alignment = taRightJustify
           Expanded = False
-          FieldName = 'QUANTIDADE_INICIAL'
-          Title.Alignment = taCenter
-          Title.Caption = 'Qtd. Inicial'
-          Width = 80
           Visible = True
         end
         item
-          Alignment = taRightJustify
           Expanded = False
-          FieldName = 'PESO_MEDIO_ATUAL'
-          Title.Alignment = taCenter
-          Title.Caption = 'Peso M'#233'dio (kg)'
-          Width = 90
           Visible = True
         end>
     end

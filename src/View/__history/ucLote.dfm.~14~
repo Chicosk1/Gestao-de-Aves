@@ -18,6 +18,9 @@ object frmLote: TfrmLote
     Height = 60
     Align = alTop
     TabOrder = 0
+    ExplicitLeft = 232
+    ExplicitTop = 120
+    ExplicitWidth = 185
     object lblTitulo: TLabel
       Left = 21
       Top = 16
@@ -59,6 +62,9 @@ object frmLote: TfrmLote
       Align = alRight
       Caption = 'Lan'#231'ar Mortalidade'
       TabOrder = 1
+      ExplicitLeft = 400
+      ExplicitTop = 1
+      ExplicitHeight = 58
     end
   end
   object pnlGrid: TPanel
@@ -69,13 +75,16 @@ object frmLote: TfrmLote
     Margins.Bottom = 10
     Align = alClient
     TabOrder = 1
+    ExplicitLeft = 120
+    ExplicitTop = 112
+    ExplicitWidth = 185
+    ExplicitHeight = 41
     object gridLotes: TDBGrid
       Left = 1
       Top = 1
       Width = 622
       Height = 339
       Align = alClient
-      DataSource = dsLotes
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
@@ -83,52 +92,6 @@ object frmLote: TfrmLote
       TitleFont.Height = -12
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
-      Columns = <
-        item
-          Alignment = taRightJustify
-          Expanded = False
-          FieldName = 'ID_LOTE'
-          Title.Alignment = taCenter
-          Title.Caption = 'C'#243'd.'
-          Width = 50
-          Visible = True
-        end
-        item
-          Alignment = taRightJustify
-          Expanded = False
-          FieldName = 'DESCRICAO'
-          Title.Alignment = taCenter
-          Title.Caption = 'Descri'#231#227'o do Lote'
-          Width = 250
-          Visible = True
-        end
-        item
-          Alignment = taRightJustify
-          Expanded = False
-          FieldName = 'DATA_ENTRADA'
-          Title.Alignment = taCenter
-          Title.Caption = 'Data Entrada'
-          Width = 80
-          Visible = True
-        end
-        item
-          Alignment = taRightJustify
-          Expanded = False
-          FieldName = 'QUANTIDADE_INICIAL'
-          Title.Alignment = taCenter
-          Title.Caption = 'Qtd. Inicial'
-          Width = 80
-          Visible = True
-        end
-        item
-          Alignment = taRightJustify
-          Expanded = False
-          FieldName = 'PESO_MEDIO_ATUAL'
-          Title.Alignment = taCenter
-          Title.Caption = 'Peso M'#233'dio (kg)'
-          Width = 90
-          Visible = True
-        end>
     end
   end
   object pnlRodape: TPanel
@@ -138,6 +101,7 @@ object frmLote: TfrmLote
     Height = 40
     Align = alBottom
     TabOrder = 2
+    ExplicitTop = 400
   end
   object dsLotes: TDataSource
     Left = 568
