@@ -21,6 +21,7 @@ type
     function GetPesoMedioAtual: Double;
   end;
 
+  // Interface para a Entidade Pesagem
   IPesagem = interface
     ['{B2C3D4E5-F6A7-4890-B234-222222222222}']
     function SetId(Value: Integer): IPesagem;
@@ -35,6 +36,7 @@ type
     function GetQuantidadePesada: Integer;
   end;
 
+  // Interface para a Entidade Mortalidade
   IMortalidade = interface
     ['{C3D4E5F6-A7B8-4901-C345-333333333333}']
     function SetId(Value: Integer): IMortalidade;

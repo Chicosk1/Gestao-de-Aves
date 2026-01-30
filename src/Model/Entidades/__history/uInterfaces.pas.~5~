@@ -35,6 +35,7 @@ type
     function GetQuantidadePesada: Integer;
   end;
 
+  // Interface para a Entidade Mortalidade
   IMortalidade = interface
     ['{C3D4E5F6-A7B8-4901-C345-333333333333}']
     function SetId(Value: Integer): IMortalidade;
