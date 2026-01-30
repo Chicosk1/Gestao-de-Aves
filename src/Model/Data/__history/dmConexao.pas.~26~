@@ -11,9 +11,9 @@ uses
 
 type
   TdmConexao = class(TDataModule)
-    FDConexao         : TFDConnection;
+    FDConexao: TFDConnection;
     FDPhysFBDriverLink: TFDPhysFBDriverLink;
-    FDGUIxWaitCursor  : TFDGUIxWaitCursor;
+    FDGUIxWaitCursor: TFDGUIxWaitCursor;
     procedure DataModuleCreate(Sender: TObject);
   private
     const
