@@ -1,0 +1,35 @@
+unit cLote;
+
+interface
+
+uses
+  Data.DB,
+  uDmInterface,
+  uDmLote;
+
+type
+  TControllerLote = class
+  private
+    FLoteDAO: ILoteDAO;
+  public
+    constructor Create;
+    function BuscarLotes: TDataSet;
+  end;
+
+implementation
+
+{ TControllerLote }
+
+constructor TControllerLote.Create;
+begin
+  // Instancia a classe concreta do DAO através do método Factory
+  FLoteDAO := TDmLote.New;
+end;
+
+function TControllerLote.BuscarLotes: TDataSet;
+begin
+  // Delega a busca para o DAO e retorna o DataSet para a View ligar no Grid
+  Result := FLoteDAO.ObterTodos;
+end;
+
+end.

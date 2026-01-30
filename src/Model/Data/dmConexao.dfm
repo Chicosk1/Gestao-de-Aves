@@ -1,7 +1,7 @@
-object DataModule1: TDataModule1
+object fdmConexao: TfdmConexao
   Height = 480
   Width = 640
-  object FDConnection: TFDConnection
+  object FDConexao: TFDConnection
     Left = 32
     Top = 8
   end

@@ -1,0 +1,73 @@
+unit ucLote;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics  , Vcl.Controls   , Vcl.Forms      , Vcl.Dialogs    , Vcl.ExtCtrls  ,
+  Vcl.StdCtrls  , Data.DB        , Vcl.Grids      , Vcl.DBGrids    , cLote         ;
+
+type
+  TfrmLote = class(TForm)
+    pnlTopo           : TPanel     ;
+    pnlGrid           : TPanel     ;
+    lblTitulo         : TLabel     ;
+    btnNovaPesagem    : TButton    ;
+    btnNovaMortalidade: TButton    ;
+    gridLotes         : TDBGrid    ;
+    pnlRodape         : TPanel     ;
+    dsLotes           : TDataSource;
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure gridLotesDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+  private
+    { Private declarations }
+    FController: TControllerLote;
+    procedure ListarLotes;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmLote: TfrmLote;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmLote.FormCreate(Sender: TObject);
+begin
+  FController := TControllerLote.Create;
+  ListarLotes;
+end;
+
+procedure TfrmLote.FormDestroy(Sender: TObject);
+begin
+  FController.Free;
+end;
+
+procedure TfrmLote.ListarLotes;
+begin
+  dsLotes.DataSet := FController.BuscarLotes;
+end;
+
+procedure TfrmLote.gridLotesDrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var
+  nPercMortalidade: Double;
+begin
+  if not dsLotes.DataSet.IsEmpty then
+  begin
+    nPercMortalidade := dsLotes.DataSet.FieldByName('PERC_MORTALIDADE').AsFloat;
+
+    if nPercMortalidade > 10 then
+      gridLotes.Canvas.Brush.Color := $00CCCCFF
+    else if nPercMortalidade > 5 then
+      gridLotes.Canvas.Brush.Color := $00CCFFFF
+    else
+      gridLotes.Canvas.Brush.Color := $00CCFFCC;
+  end;
+end;
+
+end.

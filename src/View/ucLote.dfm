@@ -10,6 +10,8 @@ object frmLote: TfrmLote
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   TextHeight = 15
   object pnlTopo: TPanel
     Left = 0
@@ -83,6 +85,7 @@ object frmLote: TfrmLote
       TitleFont.Height = -12
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
+      OnDrawColumnCell = gridLotesDrawColumnCell
       Columns = <
         item
           Alignment = taRightJustify

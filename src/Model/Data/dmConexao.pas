@@ -7,10 +7,10 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf   , FireDAC.Comp.UI   ,
   FireDAC.Phys.Intf  , FireDAC.Stan.Def  , FireDAC.Stan.Pool , FireDAC.Stan.Async,
   FireDAC.Phys       , FireDAC.Phys.FB   , FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait,
-  FireDAC.Comp.Client;
+  FireDAC.Comp.Client, FireDAC.Phys.IBBase;
 
 type
-  TdmConexao = class(TDataModule)
+  TfdmConexao = class(TDataModule)
     FDConexao         : TFDConnection;
     FDPhysFBDriverLink: TFDPhysFBDriverLink;
     FDGUIxWaitCursor  : TFDGUIxWaitCursor;
@@ -23,11 +23,11 @@ type
       DB_CAMINHO = 'C:\FireBird\DADOS\LOTE_AVES_DB.FDB';
     procedure ConfigurarConexao;
   public
-    function GetConexao: TFDConnection;
+    class function GetConexao: TFDConnection;
   end;
 
 var
-  DataModuleConexao: TdmConexao;
+  fdmConexao: TfdmConexao;
 
 implementation
 
@@ -35,29 +35,33 @@ implementation
 
 {$R *.dfm}
 
-procedure TdmConexao.DataModuleCreate(Sender: TObject);
+procedure TfdmConexao.DataModuleCreate(Sender: TObject);
 begin
   ConfigurarConexao;
 end;
 
-procedure TdmConexao.ConfigurarConexao;
+procedure TfdmConexao.ConfigurarConexao;
 begin
   FDConexao.Params.Clear;
   FDConexao.Params.DriverID := DB_DRIVER;
   FDConexao.Params.Database := DB_CAMINHO;
   FDConexao.Params.UserName := DB_USUARIO;
   FDConexao.Params.Password := DB_SENHA;
+  FDConexao.Params.Add('CharacterSet=win1252');
 
   FDConexao.LoginPrompt := False;
   FDConexao.Connected   := True;
 end;
 
-function TdmConexao.GetConexao: TFDConnection;
+class function TfdmConexao.GetConexao: TFDConnection;
 begin
-  if not FDConexao.Connected then
-    ConfigurarConexao;
+  if fdmConexao = nil then
+    fdmConexao := TfdmConexao.Create(nil);
 
-  Result := FDConexao;
+  if not fdmConexao.FDConexao.Connected then
+    fdmConexao.ConfigurarConexao;
+
+  Result := fdmConexao.FDConexao;
 end;
 
 end.

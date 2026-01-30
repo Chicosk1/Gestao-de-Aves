@@ -103,6 +103,8 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -123,10 +125,32 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="View\Main.pas">
-            <Form>Form1</Form>
-            <FormType>dfm</FormType>
+        <DCCReference Include="View\ucLote.pas">
+            <Form>frmLote</Form>
         </DCCReference>
+        <DCCReference Include="View\ucPesagem.pas">
+            <Form>frmPesagem</Form>
+        </DCCReference>
+        <DCCReference Include="View\ucMortalidade.pas">
+            <Form>frmMortalidade</Form>
+        </DCCReference>
+        <DCCReference Include="View\Components\uIndicador.pas"/>
+        <DCCReference Include="Controller\cLote.pas"/>
+        <DCCReference Include="Controller\cOperacoes.pas"/>
+        <DCCReference Include="Model\Entidades\uInterfaces.pas"/>
+        <DCCReference Include="Model\Entidades\uBase.pas"/>
+        <DCCReference Include="Model\Entidades\uLote.pas"/>
+        <DCCReference Include="Model\Entidades\uPesagem.pas"/>
+        <DCCReference Include="Model\Entidades\uMortalidade.pas"/>
+        <DCCReference Include="Model\Data\dmConexao.pas">
+            <Form>fdmConexao</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Model\Data\uDmInterface.pas"/>
+        <DCCReference Include="Model\Data\uDmBase.pas"/>
+        <DCCReference Include="Model\Data\uDmLote.pas"/>
+        <DCCReference Include="Model\Data\uDmPesagem.pas"/>
+        <DCCReference Include="Model\Data\uDmMortalidade.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -147,6 +171,10 @@
                 <Source>
                     <Source Name="MainSource">LoteAves.dpr</Source>
                 </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k290.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp290.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="4">
                 <DeployFile LocalName="Win32\Debug\LoteAves.exe" Configuration="Debug" Class="ProjectOutput">
