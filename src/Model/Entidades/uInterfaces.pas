@@ -3,23 +3,8 @@ unit uInterfaces;
 interface
 
 type
-  ILote = interface;
-  IPesagem = interface;
+  IPesagem     = interface;
   IMortalidade = interface;
-
-  ILote = interface
-    ['{A1B2C3D4-E5F6-4789-A123-111111111111}']
-    function SetId(Value: Integer): ILote;
-    function GetId: Integer;
-    function SetDescricao(Value: String): ILote;
-    function GetDescricao: String;
-    function SetDataEntrada(Value: TDateTime): ILote;
-    function GetDataEntrada: TDateTime;
-    function SetQuantidadeInicial(Value: Integer): ILote;
-    function GetQuantidadeInicial: Integer;
-    function SetPesoMedioAtual(Value: Double): ILote;
-    function GetPesoMedioAtual: Double;
-  end;
 
   IPesagem = interface
     ['{B2C3D4E5-F6A7-4890-B234-222222222222}']

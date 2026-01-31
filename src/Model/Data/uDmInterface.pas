@@ -3,8 +3,7 @@ unit uDmInterface;
 interface
 
 uses
-  Data.DB,
-  uInterfaces;
+  Data.DB, uInterfaces;
 
 type
   IDmLote = interface

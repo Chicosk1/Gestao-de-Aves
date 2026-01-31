@@ -19,10 +19,10 @@ type
     dsLotes           : TDataSource;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure gridLotesDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure btnNovaPesagemClick(Sender: TObject);
     procedure btnNovaMortalidadeClick(Sender: TObject);
+    procedure gridLotesDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     FController: TControllerLote;
     procedure ListarLotes;
@@ -41,19 +41,21 @@ uses
 
 procedure TfrmLote.btnNovaMortalidadeClick(Sender: TObject);
 var
-  View: TfrmMortalidade;
-  IdLote: Integer;
-  Descricao: string;
+  View                        : TfrmMortalidade;
+  IdLote, QtdInicial, QtdAtual: Integer        ;
+  Descricao                   : string         ;
 begin
   if dsLotes.DataSet.IsEmpty then
     Exit;
 
-  IdLote    := dsLotes.DataSet.FieldByName('ID_LOTE').AsInteger ;
-  Descricao := dsLotes.DataSet.FieldByName('DESCRICAO').AsString;
+  IdLote     := dsLotes.DataSet.FieldByName('ID_LOTE').AsInteger           ;
+  Descricao  := dsLotes.DataSet.FieldByName('DESCRICAO').AsString          ;
+  QtdAtual   := dsLotes.DataSet.FieldByName('QUANTIDADE_ATUAL').AsInteger  ;
+  QtdInicial := dsLotes.DataSet.FieldByName('QUANTIDADE_INICIAL').AsInteger;
 
   View := TfrmMortalidade.Create(Self);
   try
-    View.PrepararLancamentos(IdLote, Descricao);
+    View.PrepararLancamentos(IdLote, QtdInicial, QtdAtual, Descricao);
 
     if View.ShowModal = mrOk then
       ListarLotes;
@@ -64,19 +66,21 @@ end;
 
 procedure TfrmLote.btnNovaPesagemClick(Sender: TObject);
 var
-  View: TfrmPesagem;
-  IdLote: Integer;
-  Descricao: string;
+  View      : TfrmPesagem;
+  IdLote    : Integer    ;
+  Descricao : string     ;
+  QtdInicial: Integer    ;
 begin
   if dsLotes.DataSet.IsEmpty then
     Exit;
 
-  IdLote    := dsLotes.DataSet.FieldByName('ID_LOTE').AsInteger ;
-  Descricao := dsLotes.DataSet.FieldByName('DESCRICAO').AsString;
+  IdLote     := dsLotes.DataSet.FieldByName('ID_LOTE').AsInteger           ;
+  Descricao  := dsLotes.DataSet.FieldByName('DESCRICAO').AsString          ;
+  QtdInicial := dsLotes.DataSet.FieldByName('QUANTIDADE_INICIAL').AsInteger;
 
   View := TfrmPesagem.Create(Self);
   try
-    View.PrepararLancamentos(IdLote, Descricao);
+    View.PrepararLancamentos(IdLote, Descricao, QtdInicial);
 
     if View.ShowModal = mrOk then
       ListarLotes;

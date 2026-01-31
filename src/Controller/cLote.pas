@@ -3,9 +3,7 @@ unit cLote;
 interface
 
 uses
-  Data.DB,
-  uDmInterface,
-  uDmLote;
+  Data.DB, uDmInterface, uDmLote;
 
 type
   TControllerLote = class

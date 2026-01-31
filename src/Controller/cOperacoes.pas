@@ -3,16 +3,13 @@ unit cOperacoes;
 interface
 
 uses
-  System.SysUtils,
-  uInterfaces,
-  uDmInterface,
-  uDmPesagem,
-  uDmMortalidade;
+  System.SysUtils, uInterfaces   , uDmInterface,
+  uDmPesagem     , uDmMortalidade;
 
 type
   TControllerOperacoes = class
   private
-    FDmPesagem: IDmPesagem;
+    FDmPesagem    : IDmPesagem;
     FDmMortalidade: IDmMortalidade;
   public
     constructor Create;

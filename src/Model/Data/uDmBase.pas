@@ -3,10 +3,8 @@ unit uDmBase;
 interface
 
 uses
-  System.SysUtils,
-  Data.DB,
-  FireDAC.Comp.Client,
-  dmConexao;
+  System.SysUtils, Data.DB, FireDAC.Comp.Client,
+  dmConexao      ;
 
 type
   TDmBase = class(TInterfacedObject)

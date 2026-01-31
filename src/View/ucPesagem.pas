@@ -5,8 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics  , Vcl.Controls   , Vcl.Forms      , Vcl.Dialogs    , Vcl.ExtCtrls  ,
-  Vcl.StdCtrls  , Vcl.Buttons    , Vcl.ComCtrls   , cOperacoes     , uInterfaces   ,
-  uPesagem      ;
+  Vcl.StdCtrls  , Vcl.Buttons    , Vcl.ComCtrls   ;
 
 type
   TfrmPesagem = class(TForm)
@@ -24,10 +23,12 @@ type
     btnCancelar       : TBitBtn        ;
     procedure btnSalvarClick(Sender: TObject);
   private
-    FIdLote   : Integer;
+    FIdLote        : Integer;
+    FQtdInicialLote: Integer;
   public
-    procedure PrepararLancamentos(AIdLote: Integer; ADescricao: string);
-    property IdLote   : Integer read FIdLote   ;
+    procedure PrepararLancamentos(AIdLote: Integer; ADescricao: string; AQtdInicial: Integer);
+    property IdLote        : Integer read FIdLote        ;
+    property QtdInicialLote: Integer read FQtdInicialLote;
   end;
 
 var
@@ -37,14 +38,20 @@ implementation
 
 {$R *.dfm}
 
+uses
+  cOperacoes, uInterfaces, uPesagem;
+
 { TfrmPesagem }
 
 procedure TfrmPesagem.btnSalvarClick(Sender: TObject);
 var
-  Controller: TControllerOperacoes;
-  Pesagem   : IPesagem;
+  Controller : TControllerOperacoes;
+  Pesagem    : IPesagem;
+  QtdDigitada: Integer;
 begin
   inherited;
+
+  QtdDigitada := StrToIntDef(edtQuantidade.Text, 0);
 
   if StrToFloatDef(edtPesoMedio.Text, 0) <= 0 then
   begin
@@ -60,11 +67,19 @@ begin
     Exit;
   end;
 
+  if QtdDigitada > FQtdInicialLote then
+  begin
+    ShowMessage(Format('A quantidade pesada (%d) não pode ser maior que a quantidade inicial do lote (%d).',
+      [QtdDigitada, FQtdInicialLote]));
+    if edtQuantidade.CanFocus then edtQuantidade.SetFocus;
+    Exit;
+  end;
+
   Pesagem := TPesagem.New;
   Pesagem.SetIdLote(IdLote)
          .SetDataPesagem(dtpDataPesagem.Date)
          .SetPesoMedio(StrToFloat(edtPesoMedio.Text))
-         .SetQuantidadePesada(StrToInt(edtQuantidade.Text));
+         .SetQuantidadePesada(QtdDigitada);
 
   Controller := TControllerOperacoes.Create;
   try
@@ -85,9 +100,11 @@ begin
   end;
 end;
 
-procedure TfrmPesagem.PrepararLancamentos(AIdLote: Integer; ADescricao: string);
+procedure TfrmPesagem.PrepararLancamentos(AIdLote: Integer; ADescricao: string; AQtdInicial: Integer);
 begin
-  FIdLote := AIdLote;
+  FIdLote                    := AIdLote    ;
+  FQtdInicialLote            := AQtdInicial;
+
   lblLoteSelecionado.Caption := ADescricao;
 
   dtpDataPesagem.Date := Date;

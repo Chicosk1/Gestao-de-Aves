@@ -3,14 +3,8 @@ unit uDmLote;
 interface
 
 uses
-  System.SysUtils,
-  Data.DB,
-  FireDAC.Comp.Client,
-  FireDAC.DApt,
-  uDmInterface,
-  uInterfaces,
-  uDmBase,
-  dmConexao;
+  System.SysUtils, Data.DB    , FireDAC.Comp.Client, FireDAC.DApt,
+  uDmInterface   , uInterfaces, uDmBase            , dmConexao   ;
 
 type
   TDmLote = class(TDmBase, IDmLote)

@@ -24,10 +24,14 @@ type
     memObservacao     : TMemo          ;
     procedure btnSalvarClick(Sender: TObject);
   private
-    FIdLote   : Integer;
+    FIdLote    : Integer;
+    FQtdInicial: Integer;
+    FQtdAtual  : Integer;
   public
-    procedure PrepararLancamentos(AIdLote: Integer; ADescricao: string);
-    property IdLote   : Integer read FIdLote   ;
+    procedure PrepararLancamentos(AIdLote, AQtdInicial, AQtdAtual: Integer; ADescricao: string);
+    property IdLote    : Integer read FIdLote    ;
+    property QtdInicial: Integer read FQtdInicial;
+    property QtdAtual  : Integer read FQtdAtual  ;
   end;
 
 var
@@ -41,11 +45,15 @@ implementation
 
 procedure TfrmMortalidade.btnSalvarClick(Sender: TObject);
 var
-  Controller: TControllerOperacoes;
-  Mortalidade: IMortalidade;
-  IndiceAtual: Double;
+  Controller              : TControllerOperacoes;
+  Mortalidade             : IMortalidade        ;
+  QtdDigitada             : Integer             ;
+  TotalMortosJaRegistrados: Integer             ;
 begin
   inherited;
+
+  QtdDigitada := StrToIntDef(edtQuantidade.Text, 0);
+  TotalMortosJaRegistrados := FQtdInicial - FQtdAtual;
 
   if StrToIntDef(edtQuantidade.Text, 0) <= 0 then
   begin
@@ -54,17 +62,29 @@ begin
     Exit;
   end;
 
+  if (QtdDigitada + TotalMortosJaRegistrados) > FQtdInicial then
+  begin
+    ShowMessage(Format('A quantidade informada (%d) somada às mortalidades anteriores (%d) ultrapassa a quantidade inicial do lote (%d).' + sLineBreak +
+                       'Máximo permitido (aves vivas): %d',
+                       [QtdDigitada, TotalMortosJaRegistrados, FQtdInicial, FQtdAtual]));
+    if edtQuantidade.CanFocus then edtQuantidade.SetFocus;
+    Exit;
+  end;
+
   Mortalidade := TMortalidade.New;
   Mortalidade.SetIdLote(IdLote)
              .SetDataMortalidade(dtpDataMortalidade.Date)
-             .SetQuantidadeMorta(StrToInt(edtQuantidade.Text))
+             .SetQuantidadeMorta(QtdDigitada)
              .SetObservacao(memObservacao.Text);
 
   Controller := TControllerOperacoes.Create;
   try
     try
-      ShowMessage('Mortalidade registrada com sucesso!');
-      ModalResult := mrOk;
+      if Controller.SalvarMortalidade(Mortalidade) then
+      begin
+        ShowMessage('Mortalidade registrada com sucesso!');
+        ModalResult := mrOk;
+      end;
     except
       on E: Exception do
       begin
@@ -76,10 +96,12 @@ begin
   end;
 end;
 
-procedure TfrmMortalidade.PrepararLancamentos(AIdLote: Integer;
-  ADescricao: string);
+procedure TfrmMortalidade.PrepararLancamentos(AIdLote, AQtdInicial, AQtdAtual: Integer; ADescricao: string);
 begin
-  FIdLote := AIdLote;
+  FIdLote                    := AIdLote    ;
+  FQtdInicial                := AQtdInicial;
+  FQtdAtual                  := AQtdAtual  ;
+
   lblLoteSelecionado.Caption := ADescricao;
 
   dtpDataMortalidade.Date := Date;

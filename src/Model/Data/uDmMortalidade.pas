@@ -3,10 +3,8 @@ unit uDmMortalidade;
 interface
 
 uses
-  System.SysUtils, Data.DB, FireDAC.Comp.Client, FireDAC.Stan.Param,
-  uDmBase,
-  uDmInterface,
-  uInterfaces;
+  System.SysUtils, Data.DB     , FireDAC.Comp.Client,
+  uDmBase        , uDmInterface, uInterfaces        ;
 
 type
   TDmMortalidade = class(TDmBase, IDmMortalidade)

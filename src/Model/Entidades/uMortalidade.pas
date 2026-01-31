@@ -8,11 +8,11 @@ uses
 type
   TMortalidade = class(TInterfacedObject, IMortalidade)
   private
-    FId: Integer;
-    FIdLote: Integer;
+    FId             : Integer  ;
+    FIdLote         : Integer  ;
     FDataMortalidade: TDateTime;
-    FQuantidadeMorta: Integer;
-    FObservacao: string;
+    FQuantidadeMorta: Integer  ;
+    FObservacao     : string   ;
   public
     class function New: IMortalidade;
 

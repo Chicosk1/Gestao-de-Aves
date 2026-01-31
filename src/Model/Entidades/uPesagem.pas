@@ -8,11 +8,11 @@ uses
 type
   TPesagem = class(TInterfacedObject, IPesagem)
   private
-    FId: Integer;
-    FIdLote: Integer;
-    FDataPesagem: TDateTime;
-    FPesoMedio: Double;
-    FQuantidadePesada: Integer;
+    FId              : Integer  ;
+    FIdLote          : Integer  ;
+    FDataPesagem     : TDateTime;
+    FPesoMedio       : Double   ;
+    FQuantidadePesada: Integer  ;
   public
     class function New: IPesagem;
 
