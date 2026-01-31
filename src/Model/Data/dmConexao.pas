@@ -47,7 +47,7 @@ begin
   FDConexao.Params.Database := DB_CAMINHO;
   FDConexao.Params.UserName := DB_USUARIO;
   FDConexao.Params.Password := DB_SENHA;
-  FDConexao.Params.Add('CharacterSet=win1252');
+  FDConexao.Params.Add('CharacterSet=utf8');
 
   FDConexao.LoginPrompt := False;
   FDConexao.Connected   := True;

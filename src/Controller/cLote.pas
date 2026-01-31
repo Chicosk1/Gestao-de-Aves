@@ -10,7 +10,7 @@ uses
 type
   TControllerLote = class
   private
-    FLoteDAO: ILoteDAO;
+    FDmLote: IDmLote;
   public
     constructor Create;
     function BuscarLotes: TDataSet;
@@ -22,12 +22,12 @@ implementation
 
 constructor TControllerLote.Create;
 begin
-  FLoteDAO := TDmLote.New;
+  FDmLote := TDmLote.New;
 end;
 
 function TControllerLote.BuscarLotes: TDataSet;
 begin
-  Result := FLoteDAO.ObterTodos;
+  Result := FDmLote.ObterTodos;
 end;
 
 end.

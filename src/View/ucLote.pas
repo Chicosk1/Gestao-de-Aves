@@ -59,7 +59,7 @@ var
 begin
   if not dsLotes.DataSet.IsEmpty then
   begin
-    nPercMortalidade := dsLotes.DataSet.FieldByName('PERC_MORTALIDADE').AsFloat;
+    nPercMortalidade := dsLotes.DataSet.FieldByName('PERCENTUAL_MORTALIDADE').AsFloat;
 
     if      nPercMortalidade > 10 then
       gridLotes.Canvas.Brush.Color := $00CCCCFF
@@ -72,7 +72,7 @@ begin
   if gdSelected in State then
     begin
       gridLotes.Canvas.Brush.Color := clHighlight;
-      gridLotes.Canvas.Font.Color := clHighlightText;
+      gridLotes.Canvas.Font.Color  := clHighlightText;
     end;
 
   gridLotes.DefaultDrawColumnCell(Rect, DataCol, Column, State);

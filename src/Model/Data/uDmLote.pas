@@ -11,13 +11,13 @@ uses
   dmConexao;
 
 type
-  TDmLote = class(TInterfacedObject, ILoteDAO)
+  TDmLote = class(TInterfacedObject, IDmLote)
   private
     FStoredProc: TFDStoredProc;
   public
     constructor Create;
     destructor Destroy; override;
-    class function New: ILoteDAO;
+    class function New: IDmLote;
     function ObterTodos: TDataSet;
   end;
 
@@ -37,7 +37,7 @@ begin
   inherited;
 end;
 
-class function TDmLote.New: ILoteDAO;
+class function TDmLote.New: IDmLote;
 begin
   Result := Self.Create;
 end;

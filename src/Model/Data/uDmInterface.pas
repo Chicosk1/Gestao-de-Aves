@@ -7,17 +7,17 @@ uses
   uInterfaces;
 
 type
-  ILoteDAO = interface
+  IDmLote = interface
     ['{6763D563-1768-4504-8902-86101416962A}']
     function ObterTodos: TDataSet;
   end;
 
-  IPesagemDAO = interface
+  IDmPesagem = interface
     ['{23206775-4309-4809-9060-70808381123B}']
     procedure Inserir(Entidade: IPesagem);
   end;
 
-  IMortalidadeDAO = interface
+  IDmMortalidade = interface
     ['{10906233-5601-4190-8022-83908381123C}']
     function Inserir(Entidade: IMortalidade): Double;
   end;
