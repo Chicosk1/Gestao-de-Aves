@@ -3,9 +3,10 @@ unit ucLote;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
-  Vcl.Graphics  , Vcl.Controls   , Vcl.Forms      , Vcl.Dialogs    , Vcl.ExtCtrls  ,
-  Vcl.StdCtrls  , Data.DB        , Vcl.Grids      , Vcl.DBGrids    , cLote         ;
+  Winapi.Windows , Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics   , Vcl.Controls   , Vcl.Forms      , Vcl.Dialogs    , Vcl.ExtCtrls  ,
+  Vcl.StdCtrls   , Data.DB        , Vcl.Grids      , Vcl.DBGrids    , cLote         ,
+  uFrameIndicador;
 
 type
   TfrmLote = class(TForm)
@@ -21,11 +22,11 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure btnNovaPesagemClick(Sender: TObject);
     procedure btnNovaMortalidadeClick(Sender: TObject);
-    procedure gridLotesDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     FController: TControllerLote;
+    FIndicador : TFrameIndicador;
     procedure ListarLotes;
+    procedure OnLoteSelecionado(Sender: TObject; Field: TField);
   public
   end;
 
@@ -92,12 +93,22 @@ end;
 procedure TfrmLote.FormCreate(Sender: TObject);
 begin
   FController := TControllerLote.Create;
+
+  FIndicador                  := TFrameIndicador.Create(Self);
+  FIndicador.Parent           := pnlRodape;
+  FIndicador.Align            := alLeft;
+  FIndicador.Margins.Left     := 10;
+  FIndicador.AlignWithMargins := True;
+
+  dsLotes.OnDataChange := OnLoteSelecionado;
+
   ListarLotes;
 end;
 
 procedure TfrmLote.FormDestroy(Sender: TObject);
 begin
-  FController.Free;
+  FreeAndNil(FController);
+  FreeAndNil(FIndicador);
 end;
 
 procedure TfrmLote.ListarLotes;
@@ -105,30 +116,21 @@ begin
   dsLotes.DataSet := FController.BuscarLotes;
 end;
 
-procedure TfrmLote.gridLotesDrawColumnCell(Sender: TObject; const Rect: TRect;
-  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+procedure TfrmLote.OnLoteSelecionado(Sender: TObject; Field: TField);
 var
   nPercMortalidade: Double;
 begin
-  if not dsLotes.DataSet.IsEmpty then
+  if (dsLotes.DataSet <> nil) and (not dsLotes.DataSet.IsEmpty) then
   begin
     nPercMortalidade := dsLotes.DataSet.FieldByName('PERCENTUAL_MORTALIDADE').AsFloat;
 
-    if      nPercMortalidade > 10 then
-      gridLotes.Canvas.Brush.Color := $00CCCCFF
-    else if nPercMortalidade > 5  then
-      gridLotes.Canvas.Brush.Color := $00CCFFFF
-    else
-      gridLotes.Canvas.Brush.Color := $00CCFFCC;
+    FIndicador.AtualizarSaude(nPercMortalidade);
+    FIndicador.Visible := True;
+  end
+  else
+  begin
+    FIndicador.Visible := False;
   end;
-
-  if gdSelected in State then
-    begin
-      gridLotes.Canvas.Brush.Color := clHighlight;
-      gridLotes.Canvas.Font.Color  := clHighlightText;
-    end;
-
-  gridLotes.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
 end.

@@ -88,7 +88,6 @@ object frmLote: TfrmLote
       TitleFont.Height = -12
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
-      OnDrawColumnCell = gridLotesDrawColumnCell
       Columns = <
         item
           Alignment = taRightJustify
