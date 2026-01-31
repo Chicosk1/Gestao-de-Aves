@@ -8,16 +8,19 @@ uses
   FireDAC.Comp.Client,
   FireDAC.DApt,
   uDmInterface,
+  uInterfaces,
+  uDmBase,
   dmConexao;
 
 type
-  TDmLote = class(TInterfacedObject, IDmLote)
+  TDmLote = class(TDmBase, IDmLote)
   private
     FStoredProc: TFDStoredProc;
   public
     constructor Create;
     destructor Destroy; override;
     class function New: IDmLote;
+
     function ObterTodos: TDataSet;
   end;
 
@@ -28,7 +31,7 @@ implementation
 constructor TDmLote.Create;
 begin
   FStoredProc := TFDStoredProc.Create(nil);
-  FStoredProc.Connection := TfdmConexao.GetConexao;
+  FStoredProc.Connection := GetConexao;
 end;
 
 destructor TDmLote.Destroy;
@@ -50,7 +53,6 @@ begin
   FStoredProc.StoredProcName := 'SP_GET_LOTES';
   FStoredProc.Prepare;
   FStoredProc.Open;
-
   Result := FStoredProc;
 end;
 

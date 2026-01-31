@@ -10,6 +10,7 @@ object frmPesagem: TfrmPesagem
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poScreenCenter
   TextHeight = 15
   object pnlInputs: TPanel
     Left = 0
@@ -18,10 +19,6 @@ object frmPesagem: TfrmPesagem
     Height = 341
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 312
-    ExplicitTop = 232
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object lblData: TLabel
       Left = 20
       Top = 20
@@ -75,7 +72,6 @@ object frmPesagem: TfrmPesagem
     Height = 50
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 400
     object btnSalvar: TBitBtn
       AlignWithMargins = True
       Left = 538
@@ -88,11 +84,9 @@ object frmPesagem: TfrmPesagem
       Margins.Bottom = 10
       Align = alRight
       Caption = 'Salvar'
-      ModalResult = 1
       NumGlyphs = 2
       TabOrder = 1
-      ExplicitLeft = 549
-      ExplicitHeight = 48
+      OnClick = btnSalvarClick
     end
     object btnCancelar: TBitBtn
       AlignWithMargins = True
@@ -110,8 +104,6 @@ object frmPesagem: TfrmPesagem
       ModalResult = 2
       NumGlyphs = 2
       TabOrder = 0
-      ExplicitLeft = 336
-      ExplicitTop = 8
     end
   end
   object pnlInfoLote: TPanel
@@ -121,9 +113,6 @@ object frmPesagem: TfrmPesagem
     Height = 50
     Align = alTop
     TabOrder = 2
-    ExplicitLeft = 1
-    ExplicitTop = 1
-    ExplicitWidth = 622
     object lblLoteSelecionado: TLabel
       Left = 1
       Top = 1

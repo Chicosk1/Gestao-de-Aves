@@ -10,6 +10,7 @@ object frmMortalidade: TfrmMortalidade
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poScreenCenter
   TextHeight = 15
   object pnlInfoLote: TPanel
     Left = 0
@@ -18,9 +19,6 @@ object frmMortalidade: TfrmMortalidade
     Height = 50
     Align = alTop
     TabOrder = 0
-    ExplicitLeft = 168
-    ExplicitTop = 64
-    ExplicitWidth = 185
     object lblLoteSelecionado: TLabel
       Left = 1
       Top = 1
@@ -45,10 +43,6 @@ object frmMortalidade: TfrmMortalidade
     Height = 341
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 248
-    ExplicitTop = 184
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object lblData: TLabel
       Left = 20
       Top = 20
@@ -59,7 +53,7 @@ object frmMortalidade: TfrmMortalidade
     object Label1: TLabel
       Left = 20
       Top = 80
-      Width = 93
+      Width = 91
       Height = 15
       Caption = 'Qtd. Aves Mortas'
     end
@@ -106,7 +100,6 @@ object frmMortalidade: TfrmMortalidade
     Height = 50
     Align = alBottom
     TabOrder = 2
-    ExplicitTop = 400
     object btnSalvar: TBitBtn
       AlignWithMargins = True
       Left = 538
@@ -120,9 +113,7 @@ object frmMortalidade: TfrmMortalidade
       Align = alRight
       Caption = 'Salvar'
       TabOrder = 0
-      ExplicitLeft = 528
-      ExplicitTop = 16
-      ExplicitHeight = 25
+      OnClick = btnSalvarClick
     end
     object btnCancelar: TBitBtn
       AlignWithMargins = True
@@ -136,10 +127,8 @@ object frmMortalidade: TfrmMortalidade
       Margins.Bottom = 10
       Align = alRight
       Caption = 'Cancelar'
+      ModalResult = 2
       TabOrder = 1
-      ExplicitLeft = 440
-      ExplicitTop = 16
-      ExplicitHeight = 25
     end
   end
 end

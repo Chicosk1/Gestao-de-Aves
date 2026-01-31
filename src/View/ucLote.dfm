@@ -10,6 +10,7 @@ object frmLote: TfrmLote
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   TextHeight = 15
@@ -47,6 +48,7 @@ object frmLote: TfrmLote
       Align = alRight
       Caption = 'Lan'#231'ar Pesagem'
       TabOrder = 0
+      OnClick = btnNovaPesagemClick
     end
     object btnNovaMortalidade: TButton
       AlignWithMargins = True
@@ -61,6 +63,7 @@ object frmLote: TfrmLote
       Align = alRight
       Caption = 'Lan'#231'ar Mortalidade'
       TabOrder = 1
+      OnClick = btnNovaMortalidadeClick
     end
   end
   object pnlGrid: TPanel

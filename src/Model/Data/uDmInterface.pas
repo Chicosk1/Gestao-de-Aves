@@ -14,12 +14,12 @@ type
 
   IDmPesagem = interface
     ['{23206775-4309-4809-9060-70808381123B}']
-    procedure Inserir(Entidade: IPesagem);
+    function Inserir(Entidade: IPesagem): Boolean;
   end;
 
   IDmMortalidade = interface
     ['{10906233-5601-4190-8022-83908381123C}']
-    function Inserir(Entidade: IMortalidade): Double;
+    function Inserir(Entidade: IMortalidade): Boolean;
   end;
 
 implementation
