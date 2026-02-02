@@ -1,4 +1,4 @@
-# Avaliacao-SAG - Gestão de Lote de Aves
+# Gestão de Lote de Aves
 
 Este projeto consiste numa aplicação Delphi VCL desenvolvida para gerir lotes de aves, permitindo o registo de pesagens médias e o controle de mortalidade com indicadores visuais de saúde do lote.
 
