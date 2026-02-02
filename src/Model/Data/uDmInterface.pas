@@ -14,11 +14,13 @@ type
   IDmPesagem = interface
     ['{23206775-4309-4809-9060-70808381123B}']
     function Inserir(Entidade: IPesagem): Boolean;
+    function ObterPorLote(AIdLote: Integer): TDataSet;
   end;
 
   IDmMortalidade = interface
     ['{10906233-5601-4190-8022-83908381123C}']
     function Inserir(Entidade: IMortalidade): Boolean;
+    function ObterPorLote(AIdLote: Integer): TDataSet;
   end;
 
 implementation

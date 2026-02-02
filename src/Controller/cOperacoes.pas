@@ -15,6 +15,8 @@ type
     constructor Create;
     function SalvarPesagem(AModel: IPesagem): Boolean;
     function SalvarMortalidade(AModel: IMortalidade): Boolean;
+    function GetPesagensPorLote(AIdLote: Integer): TDataSet;
+    function GetMortalidadesPorLote(AIdLote: Integer): TDataSet;
   end;
 
 implementation
@@ -25,6 +27,17 @@ constructor TControllerOperacoes.Create;
 begin
   FDmPesagem     := TDmPesagem.New;
   FDmMortalidade := TDmMortalidade.New;
+end;
+
+function TControllerOperacoes.GetMortalidadesPorLote(
+  AIdLote: Integer): TDataSet;
+begin
+  Result := FDmMortalidade.ObterPorLote(AIdLote);
+end;
+
+function TControllerOperacoes.GetPesagensPorLote(AIdLote: Integer): TDataSet;
+begin
+  Result := FDmPesagem.ObterPorLote(AIdLote)
 end;
 
 function TControllerOperacoes.SalvarMortalidade(AModel: IMortalidade): Boolean;
