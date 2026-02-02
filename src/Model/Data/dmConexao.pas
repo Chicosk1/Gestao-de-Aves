@@ -20,7 +20,7 @@ type
       DB_DRIVER  = 'FB';
       DB_USUARIO = 'SYSDBA';
       DB_SENHA   = 'masterkey';
-      DB_CAMINHO = 'C:\FireBird\DADOS\LOTE_AVES_DB.FDB';
+      DB_CAMINHO = 'C:\Repositorios\Gestao-de-Aves\LOTE_AVES_DB.FDB';
     procedure ConfigurarConexao;
   public
     class function GetConexao: TFDConnection;
