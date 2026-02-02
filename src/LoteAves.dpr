@@ -17,8 +17,7 @@ uses
   uDmPesagem in 'Model\Data\uDmPesagem.pas',
   uDmMortalidade in 'Model\Data\uDmMortalidade.pas',
   Vcl.Themes,
-  Vcl.Styles,
-  uFrameIndicador in 'View\Components\uFrameIndicador.pas' {FrameIndicador: TFrame};
+  Vcl.Styles;
 
 {$R *.res}
 
