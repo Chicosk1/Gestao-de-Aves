@@ -23,3 +23,7 @@ iOSDevice64/
 
 Thumbs.db
 Desktop.ini
+
+# Testes: saidas de cada rodada vao para a issue, nao para o Git
+tests/resultados/
+tests/*_TESTE.FDB

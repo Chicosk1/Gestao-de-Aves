@@ -1,0 +1,94 @@
+name: Defeito encontrado em teste
+description: Registrar uma divergência entre o esperado e o observado em um caso de teste.
+title: "[Defeito] "
+labels: ["defeito", "análise"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Descreva fatos, sem culpa. Hipótese de causa não é causa comprovada: diga o que foi observado e, separado, o que se suspeita.
+  - type: input
+    id: caso
+    attributes:
+      label: Caso de teste e issue de teste
+      description: Caso que revelou a falha e o link da issue de teste ligada.
+      placeholder: "CT04 — #1"
+    validations:
+      required: true
+  - type: textarea
+    id: regra
+    attributes:
+      label: Regra (oráculo)
+      description: Regra de negócio que define o esperado, com a fonte.
+      placeholder: "Acima de 10% de mortalidade: CRÍTICO, farol vermelho."
+    validations:
+      required: true
+  - type: input
+    id: versao
+    attributes:
+      label: Versão testada
+      description: Commit e ambiente da rodada (ver versao.txt).
+      placeholder: "commit 7931378 · Delphi 12 Win32 · Firebird 5"
+    validations:
+      required: true
+  - type: textarea
+    id: passos
+    attributes:
+      label: Preparação e passos para reproduzir
+      placeholder: |
+        1. Rodar tests\executar_testes.bat
+        2. Abrir tests\resultados\dunitx.txt
+    validations:
+      required: true
+  - type: textarea
+    id: esperado
+    attributes:
+      label: Esperado
+    validations:
+      required: true
+  - type: textarea
+    id: observado
+    attributes:
+      label: Observado
+      description: O que aconteceu e com que frequência.
+    validations:
+      required: true
+  - type: textarea
+    id: evidencia
+    attributes:
+      label: Evidência
+      description: Anexe dunitx.txt, dunitx.xml, isql.txt ou a captura de tela.
+    validations:
+      required: true
+  - type: dropdown
+    id: severidade
+    attributes:
+      label: Severidade (impacto do problema)
+      options:
+        - Alta
+        - Média
+        - Baixa
+    validations:
+      required: true
+  - type: dropdown
+    id: prioridade
+    attributes:
+      label: Prioridade (ordem para tratar)
+      options:
+        - Alta
+        - Média
+        - Baixa
+    validations:
+      required: true
+  - type: textarea
+    id: justificativa
+    attributes:
+      label: Justificativa da severidade e da prioridade
+      description: Impacto para a regra e para o usuário; frequência, prazo e alternativas.
+    validations:
+      required: true
+  - type: textarea
+    id: proxima-acao
+    attributes:
+      label: Próxima ação
+      description: Responsável, prazo e decisão. Após a correção, registrar confirmação e regressão com o novo commit.
